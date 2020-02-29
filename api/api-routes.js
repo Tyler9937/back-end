@@ -5,30 +5,27 @@ const restricted = require('../api/routes/auth/restricted-middleware');
 const UserRouter = require('../api/routes/users/user-route');
 
 router.get('/', (req, res) => {
-  res.status(200).json({ welcome: 'API router' });
+  res.status(200).json({ welcome: 'MedCabinet' });
 });
 
 router.use('/auth', AuthRouter);
-router.use(
-  '/users',
-  restricted,
-  checkRole('user', 'owner', 'web26'),
-  UserRouter
-);
+router.use('/users', restricted, UserRouter);
 
 module.exports = router;
 
-function checkRole(...roles) {
-  return (req, res, next) => {
-    console.log(req.decodedToken);
-    if (
-      req.decodedToken &&
-      req.decodedToken.department &&
-      roles.includes(req.decodedToken.department.toLowerCase())
-    ) {
-      next();
-    } else {
-      res.status(403).json({ message: `Don't have access!` });
-    }
-  };
-}
+// If a role is needed later ----
+
+// function checkRole(...roles) {
+//   return (req, res, next) => {
+//     console.log(req.decodedToken);
+//     if (
+//       req.decodedToken &&
+//       req.decodedToken.department &&
+//       roles.includes(req.decodedToken.department.toLowerCase())
+//     ) {
+//       next();
+//     } else {
+//       res.status(403).json({ message: `Don't have access!` });
+//     }
+//   };
+// }

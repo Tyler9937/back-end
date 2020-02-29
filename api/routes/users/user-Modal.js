@@ -4,9 +4,8 @@ module.exports = { find, add, findBy };
 
 function find(id) {
   let user = db('users');
-
   if (id) {
-    return user.where({ id: id }).first();
+    return user.where({ id }).first();
   } else {
     return user;
   }
@@ -15,9 +14,11 @@ function find(id) {
 async function add(user) {
   await db('users').insert(user);
 
-  return find(user.id);
+  return findBy(user);
 }
 
 function findBy(filter) {
-  return db('users').where(filter);
+  return db('users')
+    .where(filter)
+    .first();
 }
