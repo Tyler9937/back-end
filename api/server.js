@@ -13,5 +13,8 @@ server.use(helmet());
 server.use(cors());
 
 server.use('/api', ApiRouter);
+server.get('/', (req, res) => {
+  res.status(200).json({ message: 'ITS WORKING!!!' });
+});
 
 module.exports = server;
