@@ -52,6 +52,8 @@ Store as: localStorage.setItem('token', res.data.token)
 
 <https://medcabinet1.herokuapp.com/api/users>
 
+***\_*Test Data*\_***
+
 **Authorization Required**
 
 #### ### -- List of current users

@@ -4,19 +4,39 @@ const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../../config/secrets');
 const router = express.Router();
 const Users = require('../users/user-Modal');
+const Joi = require('@hapi/joi');
+
+const schema = Joi.object({
+  username: Joi.string().required(),
+  password: Joi.string()
+    .required()
+    .min(1)
+    .max(30),
+  email: Joi.string()
+    .email()
+    .empty('')
+    .default('No Email Provided')
+});
 
 router.post('/register', (req, res) => {
   let user = req.body;
-  const hash = bcrypt.hashSync(user.password, 10);
-  user.password = hash;
+  console.log(req.body, 'body');
+  console.log(schema.validate(user).value, 'testing');
+  let newuser = schema.validate(user).value;
+  if (!schema.validate(user).error) {
+    const hash = bcrypt.hashSync(newuser.password, 10);
+    newuser.password = hash;
 
-  Users.add(user)
-    .then(saved => {
-      res.status(201).json(saved);
-    })
-    .catch(error => {
-      res.status(500).json(error.message);
-    });
+    Users.add(newuser)
+      .then(saved => {
+        res.status(201).json(saved);
+      })
+      .catch(error => {
+        res.status(500).json(error.message);
+      });
+  } else {
+    res.status(500).json(schema.validate(user).error);
+  }
 });
 
 router.post('/login', (req, res) => {
