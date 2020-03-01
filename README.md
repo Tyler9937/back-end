@@ -9,6 +9,7 @@ https://medcabinet1.herokuapp.com/
 | POST   | /api/auth/register | Creates a user ( **username,password,email: _optional_**) |
 | POST   | /api/auth/login    | Login into account (**username,password**)                |
 | GET    | /api/users         | Retrieves a list of users (`Auth Required`)               |
+| GET    | /api/strains       | Retreives a list of strains(`Auth Required`)              |
 
 **Endpoint Specifics -**
 
@@ -79,5 +80,45 @@ Store as: localStorage.setItem('token', res.data.token)
         "email": null
     },
 
+]
+```
+
+# GET # /api/strains
+
+<https://medcabinet1.herokuapp.com/api/strains>
+
+**Authorization Required**
+
+#### ### -- List of current strains
+
+> ## !Important- --- Over 2000 strains | I have added query for this GET Request
+
+`**Query at end of /api/strains -- ie # api/strains?limit=2&sortby=id | This would only show 2 strains and sort by Id**`
+
+    --list of query commands ?limit=number | ?sortby="key"(ie: rating) | ?sortdir="sort direction"--
+        -- ie: api/strains?limit=10&sortby=id    ** ? <-- starts the Query  & <-- to add more Queries** --
+
+```
+[
+    {
+        "id": 1,
+        "strain_name": "100-Og",
+        "type": "hybrid",
+        "rating": "4",
+        "effects": "Creative,Energetic,Tingly,Euphoric,Relaxed",
+        "flavor": "Earthy,Sweet,Citrus",
+        "description": "$100 OG is a 50/50 hybrid strain that packs a strong punch. The name supposedly refers to both its strength and high price when it first started showing up in Hollywood. As a plant, $100 OG tends to produce large dark green buds with few stems. Users report a strong body effect of an indica for pain relief with the more alert, cerebral feeling thanks to its sativa side.",
+        "user_fav": null
+    },
+    {
+        "id": 2,
+        "strain_name": "98-White-Widow",
+        "type": "hybrid",
+        "rating": "4.7",
+        "effects": "Relaxed,Aroused,Creative,Happy,Energetic",
+        "flavor": "Flowery,Violet,Diesel",
+        "description": "The ‘98 Aloha White Widow is an especially potent cut of White Widow that has grown in renown alongside Hawaiian legends like Maui Wowie and Kona Gold. This White Widow phenotype reeks of diesel and skunk and has a rich earthy taste with intermittent notes of hash. Its buds are coated in trichomes, giving its dark foliage a lustrous glint to go along with its room-filling odor. This one-hitter-quitter uplifts the mind with mind-bending euphoria that materializes in the body as airy relaxation. ‘98 Aloha White Widow is available from Pua Mana 1st Hawaiian Pakalōlō Seed Bank.  ",
+        "user_fav": null
+    }
 ]
 ```
