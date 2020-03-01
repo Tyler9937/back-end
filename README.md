@@ -95,7 +95,7 @@ Store as: localStorage.setItem('token', res.data.token)
 
 > ## !Important- --- Over 2000 strains | I have added query for this GET Request
 
-`*Query at end of /api/strains - ie # api/strains?limit=2&sortby=id | This now shows 2 strains and sort by Id*`
+`*Query at end of /api/strains - ie # api/strains?limit=2&sortby=id | This now shows 2 strains and sorts by Id*`
 
     --list of query commands ?limit=number | ?sortby="key"(ie: rating) | ?sortdir="sort direction"--
         -- ie: api/strains?limit=10&sortby=id    ** ? <-- starts the Query  & <-- to add more Queries** --
