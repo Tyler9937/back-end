@@ -4,6 +4,7 @@
 - signup - Login
 - strain recommender - Form to gather Data
 - Save Recommendations
+- User input === recommended strain ??
 
 <!-- learn more about this -->
 
