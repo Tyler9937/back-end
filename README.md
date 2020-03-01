@@ -1,5 +1,7 @@
 # Med Cabinet Back-End
 
+> --- **Backend docs also published on [Postman](https://documenter.getpostman.com/view/10309872/SzKZsFwm?version=latest)**
+
 **Endpoints**
 
 https://medcabinet1.herokuapp.com/
