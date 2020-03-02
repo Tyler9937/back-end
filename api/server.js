@@ -1,4 +1,5 @@
 const express = require('express');
+var path = require('path');
 
 const server = express();
 const helmet = require('helmet');
@@ -20,10 +21,17 @@ server.use('/api', ApiRouter);
 //   res.sendFile('../index.html');
 // });
 
+// if (process.env.NODE_ENV === 'production') {
+//   server.use(express.static('BACK-END/imgs'));
+// }
+server.use(express.static(path.join(__dirname)));
+
 server.get('/', function(req, res) {
-  res.sendFile(
-    'C:/Users/Jrive/Desktop/Lambda projects/back-end/imgs/index.html'
-  );
+  res.sendFile(path.resolve(__dirname, '../imgs', 'index.html'));
+
+  // res.sendFile(
+  //   'C:/Users/Jrive/Desktop/Lambda projects/back-end/imgs/index.html'
+  // );
   //__dirname : It will resolve to your project folder.
 });
 
