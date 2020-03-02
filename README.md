@@ -122,7 +122,7 @@ if :id = 1
 
 **Authorization Required**
 
-#### ### -- Edit user based on :id value given (`Are Allowed to edit: Email & favorite_strains`)
+#### ### -- Edit user based on :id value given (`Only Allowed to edit: Email & favorite_strains`)
 
 ```
 if :id = 1
@@ -147,19 +147,23 @@ if :id = 1
 
 #### ### -- DELETE user based on :id value given
 
+> Returns a list of all remaining users
+
 ```
-if :id = 1       ---- id=1 will be deleted!!
+
+if :id = 1 ---- id=1 will be deleted!!
 {
-    "id": 1,
-    "username": "yesss",
-    "password": "$2a$10$iOJ.4t3cSyKwhZWG5hWY4ekVJc9D7ArU1z4gOEj1Scjzy7FGRm13i",
-    "email": "aaaf@sssf.com",
-    "favorite_strains": [
-        "testing",
-        "array",
-        "again"
-    ]
+"id": 1,
+"username": "yesss",
+"password": "$2a$10\$iOJ.4t3cSyKwhZWG5hWY4ekVJc9D7ArU1z4gOEj1Scjzy7FGRm13i",
+"email": "aaaf@sssf.com",
+"favorite_strains": [
+"testing",
+"array",
+"again"
+]
 }
+
 ```
 
 # GET # /api/strains
@@ -178,26 +182,32 @@ if :id = 1       ---- id=1 will be deleted!!
         -- ie: api/strains?limit=10&sortby=id    ** ? <-- starts the Query  & <-- to add more Queries** --
 
 ```
+
 [
-    {
-        "id": 1,
-        "strain_name": "100-Og",
-        "type": "hybrid",
-        "rating": "4",
-        "effects": "Creative,Energetic,Tingly,Euphoric,Relaxed",
-        "flavor": "Earthy,Sweet,Citrus",
-        "description": "$100 OG is a 50/50 hybrid strain that packs a strong punch. The name supposedly refers to both its strength and high price when it first started showing up in Hollywood. As a plant, $100 OG tends to produce large dark green buds with few stems. Users report a strong body effect of an indica for pain relief with the more alert, cerebral feeling thanks to its sativa side.",
-        "user_fav": null
-    },
-    {
-        "id": 2,
-        "strain_name": "98-White-Widow",
-        "type": "hybrid",
-        "rating": "4.7",
-        "effects": "Relaxed,Aroused,Creative,Happy,Energetic",
-        "flavor": "Flowery,Violet,Diesel",
-        "description": "The ‘98 Aloha White Widow is an especially potent cut of White Widow that has grown in renown alongside Hawaiian legends like Maui Wowie and Kona Gold. This White Widow phenotype reeks of diesel and skunk and has a rich earthy taste with intermittent notes of hash. Its buds are coated in trichomes, giving its dark foliage a lustrous glint to go along with its room-filling odor. This one-hitter-quitter uplifts the mind with mind-bending euphoria that materializes in the body as airy relaxation. ‘98 Aloha White Widow is available from Pua Mana 1st Hawaiian Pakalōlō Seed Bank.  ",
-        "user_fav": null
-    }
+{
+"id": 1,
+"strain_name": "100-Og",
+"type": "hybrid",
+"rating": "4",
+"effects": "Creative,Energetic,Tingly,Euphoric,Relaxed",
+"flavor": "Earthy,Sweet,Citrus",
+"description": "$100 OG is a 50/50 hybrid strain that packs a strong punch. The name supposedly refers to both its strength and high price when it first started showing up in Hollywood. As a plant, $100 OG tends to produce large dark green buds with few stems. Users report a strong body effect of an indica for pain relief with the more alert, cerebral feeling thanks to its sativa side.",
+"user_fav": null
+},
+{
+"id": 2,
+"strain_name": "98-White-Widow",
+"type": "hybrid",
+"rating": "4.7",
+"effects": "Relaxed,Aroused,Creative,Happy,Energetic",
+"flavor": "Flowery,Violet,Diesel",
+"description": "The ‘98 Aloha White Widow is an especially potent cut of White Widow that has grown in renown alongside Hawaiian legends like Maui Wowie and Kona Gold. This White Widow phenotype reeks of diesel and skunk and has a rich earthy taste with intermittent notes of hash. Its buds are coated in trichomes, giving its dark foliage a lustrous glint to go along with its room-filling odor. This one-hitter-quitter uplifts the mind with mind-bending euphoria that materializes in the body as airy relaxation. ‘98 Aloha White Widow is available from Pua Mana 1st Hawaiian Pakalōlō Seed Bank.  ",
+"user_fav": null
+}
 ]
+
+```
+
+```
+
 ```
