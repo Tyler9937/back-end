@@ -20,8 +20,7 @@ const schema = Joi.object({
 
 router.post('/register', (req, res) => {
   let user = req.body;
-  console.log(req.body, 'body');
-  console.log(schema.validate(user).value, 'testing');
+
   let newuser = schema.validate(user).value;
   if (!schema.validate(user).error) {
     const hash = bcrypt.hashSync(newuser.password, 10);

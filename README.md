@@ -11,7 +11,10 @@ https://medcabinet1.herokuapp.com/
 | POST   | /api/auth/register | Creates a user ( **username,password,email: _optional_**) |
 | POST   | /api/auth/login    | Login into account (**username,password**)                |
 | GET    | /api/users         | Retrieves a list of users (`Auth Required`)               |
-| GET    | /api/strains       | Retreives a list of strains(`Auth Required`)              |
+| GET    | /api/users/:id     | Retrieves user based on given id (`Auth Required`)        |
+| GET    | /api/strains       | Retrieves a list of strains (`Auth Required`)             |
+| PUT    | /api/users/:id     | Updates user's Favorite list/Email (`Auth Required`)      |
+| DELETE | /api/users/:id     | DELETE user from database (`Auth Required`)               |
 
 **Endpoint Specifics -**
 
@@ -22,6 +25,8 @@ https://medcabinet1.herokuapp.com/
 #### ### --- register account
 
 ## username: _Required/Unique_ | password: _Required_ | email: _Not Required_
+
+> Note: users will have other keys such as fav_strain that shouldn't be provided when registering
 
 ```
 {
@@ -67,22 +72,94 @@ Store as: localStorage.setItem('token', res.data.token)
         "id": 1,
         "username": "test5",
         "password": "$2a$10$dtACHrzB82Ru7f2MdA7N0uWqWPKsN3Zu0f6OMJrfkiKpRDYApqCwG",
-        "email": "email@email.com"
+        "email": "email@email.com",
+            "favorite_strains": []
     },
     {
         "id": 2,
         "username": "test1",
         "password": "$2a$10$2cjXD57g7oF2zr6MobczIua4t/uGPjv7Kn1xU3RHZGidfsg7t8JJ.",
-        "email": "email@email.com"
+        "email": "email@email.com",
+            "favorite_strains": []
     },
     {
         "id": 4,
         "username": "test2",
         "password": "$2a$10$GQIAAXfvyhzvqQm1uM7LtOQ1lNGGxgHn1Oxyalr2Ao/I2M3OTnChi",
-        "email": null
+        "email": "No Email Provided",
+        "favorite_strains":
     },
 
 ]
+```
+
+# GET # /api/users/:id
+
+<https://medcabinet1.herokuapp.com/api/users/:id>
+
+**Authorization Required**
+
+#### ### -- List of current user based on :id value
+
+```
+if :id = 1
+{
+    "id": 1,
+    "username": "yesss",
+    "password": "$2a$10$iOJ.4t3cSyKwhZWG5hWY4ekVJc9D7ArU1z4gOEj1Scjzy7FGRm13i",
+    "email": "No Email Provided",
+    "favorite_strains": [
+        "testing",
+        "array",
+        "again"
+    ]
+}
+```
+
+# PUT # /api/users/:id
+
+<https://medcabinet1.herokuapp.com/api/users/:id>
+
+**Authorization Required**
+
+#### ### -- Edit user based on :id value given (`Are Allowed to edit: Email & favorite_strains`)
+
+```
+if :id = 1
+{
+    "id": 1,
+    "username": "yesss",
+    "password": "$2a$10$iOJ.4t3cSyKwhZWG5hWY4ekVJc9D7ArU1z4gOEj1Scjzy7FGRm13i",
+    "email": "aaaf@sssf.com",
+    "favorite_strains": [
+        "testing",
+        "array",
+        "again"
+    ]
+}
+```
+
+# DELETE # /api/users/:id
+
+<https://medcabinet1.herokuapp.com/api/users/:id>
+
+**Authorization Required**
+
+#### ### -- DELETE user based on :id value given
+
+```
+if :id = 1       ---- id=1 will be deleted!!
+{
+    "id": 1,
+    "username": "yesss",
+    "password": "$2a$10$iOJ.4t3cSyKwhZWG5hWY4ekVJc9D7ArU1z4gOEj1Scjzy7FGRm13i",
+    "email": "aaaf@sssf.com",
+    "favorite_strains": [
+        "testing",
+        "array",
+        "again"
+    ]
+}
 ```
 
 # GET # /api/strains
